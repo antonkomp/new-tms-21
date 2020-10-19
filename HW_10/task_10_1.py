@@ -1,5 +1,6 @@
 import csv
 from random import randint
+from collections import OrderedDict
 
 filename = 'my_csv_file.csv'
 fields = ['First name', 'Last name', 'Age']
@@ -16,26 +17,39 @@ rows = [
     ['Svetlana', 'Kuchmareva', randint(1, 50)],
 ]
 with open(filename, 'w', newline='') as csvfile:
-    csvwriter = csv.writer(csvfile)
+    csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_NONNUMERIC)
     csvwriter.writerow(fields)
     csvwriter.writerows(rows)
 
-filename2 = 'report_file.txt'
-age_groups = ['Age groups:', '1-12', '13-18', '19-25', '26-40', '40+']
-number = ['Number:', 0, 0, 0, 0, 0]
-for i in range(10):
-    if 1 <= rows[i][2] <= 12:
-        number[1] += 1
-    elif 13 <= rows[i][2] <= 18:
-        number[2] += 1
-    elif 19 <= rows[i][2] <= 25:
-        number[3] += 1
-    elif 26 <= rows[i][2] <= 40:
-        number[4] += 1
-    elif 40 <= rows[i][2] < 50:
-        number[5] += 1
+rows_read = []
+with open(filename, 'r', newline='') as csvread:
+    csvreader = csv.reader(csvread, quoting=csv.QUOTE_NONNUMERIC)
+    fields = next(csvreader)
+    for row in csvreader:
+        rows_read.append(row)
 
+od = OrderedDict()
+od['Age groups:'] = 'Number:'
+od['1-12'] = 0
+od['13-18'] = 0
+od['19-25'] = 0
+od['26-40'] = 0
+od['40+'] = 0
+
+for i in range(len(rows_read)):
+    if 1 <= rows_read[i][2] <= 12:
+        od['1-12'] += 1
+    elif 13 <= rows_read[i][2] <= 18:
+        od['13-18'] += 1
+    elif 19 <= rows_read[i][2] <= 25:
+        od['19-25'] += 1
+    elif 26 <= rows_read[i][2] <= 40:
+        od['26-40'] += 1
+    elif 40 <= rows_read[i][2] < 50:
+        od['40+'] += 1
+
+filename2 = 'report_file.txt'
 with open(filename2, 'w') as report:
-    for i in range(6):
-        report.write('%10s' % age_groups[i])
-        report.write('%10s \n' % number[i])
+    for key, value in od.items():
+        report.write('%10s' % key)
+        report.write('%10s \n' % value)
