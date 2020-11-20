@@ -1,18 +1,14 @@
 def addition(first, second):
-    result = first + second
-    print(f'Result: {result}\n')
+    return first + second
 
 
 def subtraction(first, second):
-    result = first - second
-    print(f'Result: {result}\n')
+    return first - second
 
 
 def multiplication(first, second):
-    result = first * second
-    print(f'Result: {result}\n')
+    return first * second
 
 
 def division(first, second):
-    result = first / second
-    print(f'Result: {result}\n')
+    return first / second
