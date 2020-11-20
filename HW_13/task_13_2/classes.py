@@ -4,16 +4,13 @@ class Math:
         self.second = second
 
     def addition(self):
-        return print(f'Result: {self.first + self.second}\n')
+        return self.first + self.second
 
     def subtraction(self):
-        return print(f'Result: {self.first - self.second}\n')
+        return self.first - self.second
 
     def multiplication(self):
-        return print(f'Result: {self.first * self.second}\n')
+        return self.first * self.second
 
     def division(self):
-        try:
-            return print(f'Result: {self.first / self.second}\n')
-        except ZeroDivisionError:
-            print('Zero division error! Try again.\n')
+        return self.first / self.second
