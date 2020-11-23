@@ -4,6 +4,7 @@ class MyTime:
             self.hours = other.hours
             self.minutes = other.minutes
             self.seconds = other.seconds
+            self.total_seconds = self.hours * 3600 + self.minutes * 60 + self.seconds
         elif time_str:
             val = time_str.split(':')
             self.hours = int(val[0])
