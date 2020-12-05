@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>This is feedback form!</title>
+    <link rel="stylesheet" href="feedback.css">
+  </head>
+  <body>
+    <h1>Please leave feedback on our service!</h1>
+    <form method="POST" action="http://127.0.0.1:8000/feedback">
+        <label>Your name:</label>
+        <input type="text" name="customer_name"/><br><br>
+        <label>Your last name:</label>
+        <input type="text" name="customer_last_name"/><br><br>
+        <label>Your patronymic_name:</label>
+        <input type="text" name="customer_p_name"/><br><br>
+        <label>Your age:</label>
+        <input type="text" name="customer_age"/><br>
+        <p>The feedback:</p>
+        <textarea name="feedback"></textarea><br><br>
+        <div class="button">
+          <input type="submit" value="Submit">
+          <input type="reset" value="Clear">
+        </div>
+    </form>
+  </body>
+</html>
