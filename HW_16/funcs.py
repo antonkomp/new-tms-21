@@ -41,7 +41,6 @@ def add_brand():
 
 def get_brand(id_brand):
     brand = session.query(Brand).filter_by(id=id_brand).first()
-    session.close()
     return brand
 
 
@@ -63,7 +62,6 @@ def delete_brand():
 
 def print_brands():
     result = session.query(Brand).all()
-    session.close()
     print('id', 'name'.center(10), sep='|')
     print('-----------------------------')
     for i in result:
@@ -104,7 +102,6 @@ def delete_car():
 
 def print_cars():
     result = session.query(Car).all()
-    session.close()
     print('\nid', 'name'.center(10), 'release year', 'brand'.center(10), sep='|')
     print('------------------------------------')
     for i in result:
