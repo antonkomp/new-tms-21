@@ -5,7 +5,9 @@ from config import app, db
 
 @app.route('/create_product', methods=['GET', 'POST'])
 def create_product():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render_template('create.html')
+    elif request.method == 'POST':
         product = Product(
             name=request.form['name'],
             price=request.form['price'],
@@ -14,16 +16,14 @@ def create_product():
         db.session.add(product)
         db.session.commit()
         return redirect(url_for('all_products'))
-    return render_template('create.html')
 
 
 @app.route('/detail_product/<int:product_id>', methods=['GET'])
 def detail_product(product_id):
     if request.method == 'GET':
         product = Product.query.filter_by(id=product_id).first()
-        if product is not None:
+        if not product:
             return render_template('detail.html', product=product)
-        return redirect(url_for('all_products'))
     return redirect(url_for('all_products'))
 
 
@@ -31,20 +31,17 @@ def detail_product(product_id):
 def edit_product(product_id):
     if request.method == 'GET':
         product = Product.query.filter_by(id=product_id).first()
-        if product is not None:
+        if not product:
             return render_template('edit.html', product=product)
-        return redirect(url_for('all_products'))
     elif request.method == 'POST':
         product = Product.query.filter_by(id=product_id).first()
-        if product is not None:
+        if not product:
             product.name = request.form['name']
             product.price = request.form['price']
             product.amount = request.form['amount']
             product.comment = request.form['comment']
             db.session.add(product)
             db.session.commit()
-            return redirect(url_for('all_products'))
-        return redirect(url_for('all_products'))
     return redirect(url_for('all_products'))
 
 
@@ -52,11 +49,9 @@ def edit_product(product_id):
 def delete_product(product_id):
     if request.method == 'POST':
         product = Product.query.filter_by(id=product_id).first()
-        if product is not None:
+        if not product:
             db.session.delete(product)
             db.session.commit()
-            return redirect(url_for('all_products'))
-        return redirect(url_for('all_products'))
     return redirect(url_for('all_products'))
 
 
