@@ -1,0 +1,26 @@
+h3 {
+  color: #5144db;
+}
+form {
+  color: #fc385c;
+  float:left;
+}
+input[type="text"]{
+  margin: 0 0 0 1em;
+}
+input[type="number"]{
+  margin: 0 0 0 1em;
+}
+textarea {
+  height: 10em;
+  width: 25em;
+  position: relative;
+  top: -5px;
+  left: 1em;
+}
+.button {
+  color: #30e34e;
+  position: relative;
+  top: -15px;
+  left: 11em;
+}

@@ -1,0 +1,23 @@
+h1 {
+  background: #e64c0c;
+}
+form {
+  background: #3ae6ca;
+  float:left;
+}
+input[type="text"]{
+  padding: 0 0 0 1em;
+  margin: 0 0 0 1em;
+}
+textarea {
+  height: 10em;
+  width: 25em;
+  position: relative;
+  top: -5px;
+  left: 1em;
+}
+.button {
+  position: relative;
+  top: -10px;
+  left: 8em;
+}

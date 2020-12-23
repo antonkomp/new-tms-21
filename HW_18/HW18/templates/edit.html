@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit product</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='edit_style.css', v=1)}}">
+</head>
+<body>
+<h3>Product:</h3>
+<form action="{{ request.path }}" method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="name" value="{{ product.name }}"/><br><br>
+    <label for="price">Price</label>
+    <input type="text" name="price" placeholder="0" value="{{ product.price }}"/><br><br>
+    <label for="amount">Amount</label>
+    <input type="number" name="amount" placeholder="0" value="{{ product.amount }}"/><br><br>
+    <label for="comment">Comment</label><br><br>
+    <textarea name="comment" placeholder="comment">{{ product.comment }}</textarea><br><br>
+    <input class="button" type="submit" value="Save"/>
+</form>
+</body>
+</html>
